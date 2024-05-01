@@ -1,24 +1,20 @@
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-
-const Service = () => {
+import PropTypes from "prop-types";
+const Service = ({ service }) => {
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure className="px-5 pt-5">
-        <img
-          src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          alt="Shoes"
-          className="rounded-xl"
-        />
+        <img src={service.img} alt={service.title} className="rounded-xl" />
       </figure>
       <div className="card-body">
         <h2 className="text-xl text-dark-2 md:text-2xl font-bold">
-          Engine Diagnostics
+          {service.title}
         </h2>
 
         <div className="card-actions flex justify-between items-center">
           <h3 className="text-color-primary text-lg md:text-xl font-semibold">
-            Price : $20.00
+            Price : ${service.price}
           </h3>
           <Link>
             {" "}
@@ -30,4 +26,7 @@ const Service = () => {
   );
 };
 
+Service.propTypes = {
+  service: PropTypes.object,
+};
 export default Service;
