@@ -3,7 +3,7 @@ import parts from "../../../assets/images/about_us/parts.jpg";
 import BtnPrimary from "../../Shared/BtnPrimary/BtnPrimary";
 const About = () => {
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen">
       <div className="hero-content flex-col lg:gap-10 lg:flex-row">
         <div className="lg:w-1/2 relative">
           <img src={person} className="w-full lg:w-5/6 rounded-lg shadow-2xl" />
