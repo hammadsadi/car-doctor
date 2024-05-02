@@ -1,14 +1,31 @@
 import login from "../../assets/images/login/login.svg";
 import google from "../../assets/icons/google.svg";
 import twitter from "../../assets/icons/twitter.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { toastAlert } from "../../Utils/toastAlert";
 const Login = () => {
+  const { loginUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ email, password });
+    // Validation
+    if (!email || !password) {
+      return toastAlert("All Fields Area Required");
+    }
+    // Login User
+    loginUser(email, password)
+      .then(() => {
+        navigate("/");
+        toastAlert("Login Success", "success");
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   return (
     <div className="hero min-h-screen bg-base-200">
