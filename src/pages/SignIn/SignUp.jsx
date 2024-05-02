@@ -2,13 +2,13 @@ import login from "../../assets/images/login/login.svg";
 import google from "../../assets/icons/google.svg";
 import twitter from "../../assets/icons/twitter.svg";
 import { Link } from "react-router-dom";
-const Login = () => {
-  const handleLogin = (e) => {
+const SignUp = () => {
+  const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log({ email, password });
+    const name = form.name.value;
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -17,15 +17,27 @@ const Login = () => {
           <img src={login} alt="" className="mx-auto w-full" />
         </div>
         <div className="card-body shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <h1 className="text-3xl text-center pt-8 font-bold">Login now</h1>
-          <form className="" onSubmit={handleLogin}>
+          <h1 className="text-3xl text-center pt-8 font-bold">Sign Up Now</h1>
+          <form className="" onSubmit={handleSignUp}>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                className="input input-bordered focus:border focus:border-color-primary focus:outline-none"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
-                placeholder="email"
+                placeholder="Email"
                 name="email"
                 className="input input-bordered focus:border focus:border-color-primary focus:outline-none"
                 required
@@ -37,7 +49,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                placeholder="password"
+                placeholder="Password"
                 name="password"
                 className="input input-bordered focus:border focus:border-color-primary focus:outline-none"
                 required
@@ -48,20 +60,16 @@ const Login = () => {
                 type="submit"
                 className="btn bg-color-primary text-white hover:bg-color-primary"
               >
-                Login
+                Create Account
               </button>
             </div>
           </form>
-          <div className="divider px-5">Sign in With</div>
-          <div className="flex justify-center gap-3 items-center">
-            <img src={google} alt="" className="w-8" />
-            <img src={twitter} alt="" className="w-10" />
-          </div>
+
           <div className="text-center">
             <p className="text-sm text-dark-3">
-              New Here ?{" "}
-              <Link to="/sign-up" className="underline text-color-primary">
-                Sign Up
+              Already Have an Account?{" "}
+              <Link to="/login" className="underline text-color-primary">
+                Login
               </Link>{" "}
             </p>
           </div>
@@ -71,4 +79,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
