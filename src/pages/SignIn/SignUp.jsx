@@ -1,14 +1,23 @@
+import { useContext } from "react";
 import login from "../../assets/images/login/login.svg";
-import google from "../../assets/icons/google.svg";
-import twitter from "../../assets/icons/twitter.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider";
 const SignUp = () => {
+  const { createUser } = useContext(AuthContext);
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     const name = form.name.value;
+    // Register user
+    createUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   return (
     <div className="hero min-h-screen bg-base-200">
